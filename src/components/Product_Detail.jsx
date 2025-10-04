@@ -31,10 +31,8 @@ export default function Product_Detail() {
         } else {
           setSelectImg(null);
         }
-        console.log(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Some Thing Worng");
         navigate("*");
       });

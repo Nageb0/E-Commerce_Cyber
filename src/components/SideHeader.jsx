@@ -3,6 +3,7 @@ import { useSideHeader } from "../store/Store";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import imgLogo from "../assets/Logo.svg";
+import SearchInput from "./SearchInput";
 export default function SideHeader() {
   const { closeSideHeader } = useSideHeader();
 
@@ -11,7 +12,7 @@ export default function SideHeader() {
       initial={{ x: 500, opacity: 0, transition: { duration: 0.4 } }}
       animate={{ x: 0, opacity: 1, transition: { duration: 0.8 } }}
       exit={{ x: 500, opacity: 0, transition: { duration: 0.4 } }}
-      className="w-full h-[100vh] fixed top-0 left-0 flex justify-center items-center md:hidden z-50"
+      className="w-full h-[100vh] fixed top-0 left-0 flex justify-center items-center lg:hidden z-50"
     >
       <div className="absolute inset-0 bg-black/40" onClick={closeSideHeader} />
 
@@ -24,7 +25,7 @@ export default function SideHeader() {
           <IoClose className="text-black text-2xl" />
         </button>
 
-        <div className="pt-6 pb-4 px-2">
+        <div className=" pt-6 pb-4 px-2">
           <img src={imgLogo} alt="Logo Img" />
         </div>
 
@@ -32,14 +33,14 @@ export default function SideHeader() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.08, duration: 0.35 }}
-          className="mt-6 flex-1 overflow-auto"
+          className="mt-6 overflow-auto"
         >
           <ul className="flex flex-col divide-y divide-gray-200">
             <li>
               <Link
                 to="/"
                 onClick={closeSideHeader}
-                className="block w-full text-left px-4 py-4 text-lg text-black hover:text-neutral-500 transition"
+                className="block w-full text-center px-4 py-4 text-lg text-black hover:text-neutral-500 transition"
               >
                 Home
               </Link>
@@ -48,7 +49,7 @@ export default function SideHeader() {
               <Link
                 to="/about"
                 onClick={closeSideHeader}
-                className="block w-full text-left px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
+                className="block w-full text-center px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
               >
                 About
               </Link>
@@ -57,7 +58,7 @@ export default function SideHeader() {
               <Link
                 to="/contact"
                 onClick={closeSideHeader}
-                className="block w-full text-left px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
+                className="block w-full text-center px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
               >
                 Contact Us
               </Link>
@@ -66,13 +67,16 @@ export default function SideHeader() {
               <Link
                 to="/blog"
                 onClick={closeSideHeader}
-                className="block w-full text-left px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
+                className="block w-full text-center px-4 py-4 text-lg text-gray-600 hover:text-neutral-800 transition"
               >
                 Blog
               </Link>
             </li>
           </ul>
         </motion.nav>
+        <div className="w-full flex justify-center items-center">
+          <SearchInput />
+        </div>
       </div>
     </motion.div>
   );
