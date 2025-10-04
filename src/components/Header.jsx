@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../assets/logo.svg"
+import logo from "../assets/Logo.svg"
 import { CiUser } from "react-icons/ci";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { PiHeartThin } from "react-icons/pi";
