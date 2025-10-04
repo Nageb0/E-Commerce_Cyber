@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const domainApi = "http://localhost:1337";
+export const domainApi = "https://reassuring-spirit-778276d690.strapiapp.com";
 
 export const useActivePage = create((set) => ({
   value: 1,
