@@ -12,6 +12,7 @@ export default function CatogeryFilter({
   useEffect(() => {
     Index_Categories().then((res) => {
       setCategory(res);
+      console.log(res)
     });
   }, []);
 
@@ -54,7 +55,7 @@ export default function CatogeryFilter({
                 </div>
 
                 {/* الأيقونة بدل الإيموجي */}
-                {el.subcatogries?.length > 0 && (
+                {el.subcategories?.length > 0 && (
                   <span>
                     {openCategory === el.id ? (
                       <MdArrowDropDown size={30} />
@@ -67,7 +68,7 @@ export default function CatogeryFilter({
 
               {/* Subcategories */}
               {openCategory === el.id &&
-                el.subcatogries?.map((sub) => (
+                el.subcategories?.map((sub) => (
                   <label
                     key={sub.id}
                     className="flex gap-2 items-center p-1 ml-6 hover:bg-gray-50 rounded"

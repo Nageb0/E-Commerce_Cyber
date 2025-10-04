@@ -1,21 +1,51 @@
 import { Link } from "react-router-dom";
 import { PiHeartFill, PiHeartThin } from "react-icons/pi";
-import { useAddtoCard, useWichListModal } from "../store/Store";
+import { domainApi, useAddtoCard, useWichListModal } from "../store/Store";
+
 export default function ProductCard({ el }) {
   const { addToCard } = useAddtoCard();
   const { products, addToWishList, removeFromWishList } = useWichListModal();
+
+  // دالة بسيطة لتطبيع رابط الصورة
+  function normalizeImageUrl(url) {
+    if (!url) return null;
+
+    // إصلاح فقدان النقطتين بعد https أو http
+    if (url.startsWith("https//")) url = url.replace(/^https\/\//, "https://");
+    if (url.startsWith("http//")) url = url.replace(/^http\/\//, "http://");
+
+    // لو بدأ بـ // (protocol-relative)
+    if (url.startsWith("//")) return "https:" + url;
+
+    // لو الرابط كامل بصيغة http(s):// إرجاعه كما هو
+    if (/^https?:\/\//i.test(url)) return url;
+
+    // وإلا اعتبره مسارًا نسبيًا وألحقه بالـ domainApi
+    try {
+      // تأكّد إن domainApi موجود بدون مسافات، ويمكن أن ينتهي بشرطة مائلة أو لا
+      const base = domainApi?.endsWith("/") ? domainApi.slice(0, -1) : domainApi;
+      // لو url بدأ بشرطة مائلة اجمعها مباشرة، وإلا أضف /
+      return url.startsWith("/") ? base + url : base + "/" + url;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  const rawUrl = el.img?.[0]?.url;
+  const imgUrl = normalizeImageUrl(rawUrl);
+
   return (
     <div className="card bg-[#F6F6F6] min-h-[420px] shadow-sm flex flex-col">
       <Link
-        rel="preloud"
         to={`/product/${el.documentId}`}
         className="flex justify-center items-center h-44 lg:h-48 xl:h-56"
       >
         <img
-          className="object-contain min-w-[200px] h-full "
-          rel="preloud"
-          src={`http://localhost:1337${el.img[0]?.url}`}
-          alt="Shoes"
+          className="object-contain min-w-[200px] h-full"
+          src={imgUrl ?? "/placeholder.png"} // ضع ملف بديل في public/placeholder.png
+          alt={el.name || "Product image"}
+          loading="lazy"
+          decoding="async"
         />
       </Link>
       <div className="card-body flex flex-col justify-between">

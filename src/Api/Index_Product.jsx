@@ -15,7 +15,7 @@ export const Index_Product = async (page, pageSize, filtersIds = []) => {
           pageSize: pageSize,
         },
         filters: {
-          catogries: {
+          categories: {
             documentId: {
               $in: filtersIds,
             },

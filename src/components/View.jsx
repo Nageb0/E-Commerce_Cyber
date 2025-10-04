@@ -15,7 +15,7 @@ export default function View({ setCategory, selectedCategories }) {
   useEffect(() => {Index_Categories().then(setCategory);}, [setCategory]);
   useEffect(() => {setActivePage(1)} , [setActivePage ,selectedCategories]);
   // -----------Product-----------//
-  useEffect(() => {Index_Product(activePage, productPerPage, selectedCategories).then((res) => {setProduct(res.data || []);setProductTotal(res.total || 0);clousLodar();});}, [activePage, productPerPage, selectedCategories]);
+  useEffect(() => {Index_Product(activePage, productPerPage, selectedCategories).then((res) => {setProduct(res.data || []);setProductTotal(res.total || 0);clousLodar();console.log(res)});}, [activePage, productPerPage, selectedCategories]);
   return (
     <div className=" grow min-h-[100vh]">
       <div className="flex justify-between">

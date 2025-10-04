@@ -4,17 +4,19 @@ import { domainApi } from "../store/Store";
 export const Index_Categories = async () => {
     let final;
   await axios
-    .get(domainApi + "/api/catogries", {
+    .get(domainApi + "/api/categories", {
       params: {
         populate : "*",
         filters: {
-          catogry: {
+          category: {
             $null: true,
           },
         },
       },
-      populate : "subcatogries"
+      populate : "subcategories"
     })
     .then((res) => final = res.data.data);
   return final;
+
 };
+
