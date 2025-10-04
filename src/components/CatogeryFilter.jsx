@@ -29,10 +29,10 @@ export default function CatogeryFilter({
     setSelectedCategories(copy);
   };
   return (
-    <div className="w-full md:w-[256px]">
+    <div className="w-full lg:w-[256px]">
       <div className="collapse collapse-arrow ">
         <input type="checkbox" name="my-accordion-2 " />
-        <div className="collapse-title font-semibold border-b border-gray-700 pb-2  w-full">
+        <div className="collapse-title text-[13px] md:text-[15px] xl:text-[19px] font-semibold border-b border-gray-700 pb-2  w-full">
           Categories
         </div>
         <div className="collapse-content">
@@ -54,7 +54,7 @@ export default function CatogeryFilter({
                 </div>
 
                 {/* الأيقونة بدل الإيموجي */}
-                {el.subcatogries?.length > 0 && (
+                {el.subcategories?.length > 0 && (
                   <span>
                     {openCategory === el.id ? (
                       <MdArrowDropDown size={30} />
@@ -67,7 +67,7 @@ export default function CatogeryFilter({
 
               {/* Subcategories */}
               {openCategory === el.id &&
-                el.subcatogries?.map((sub) => (
+                el.subcategories?.map((sub) => (
                   <label
                     key={sub.id}
                     className="flex gap-2 items-center p-1 ml-6 hover:bg-gray-50 rounded"

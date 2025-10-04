@@ -6,7 +6,7 @@ export default function Home() {
    const [category, setCategory] = useState([]);
   return (
     <div className="flex text-black justify-center items-center bg-white gap-3 w-full">
-      <div className="container flex-wrap md:flex-nowrap flex p-4 gap-5">
+      <div className="container flex-wrap lg:flex-nowrap flex p-4 gap-5">
         <CatogeryFilter
           selectedCategories={selectedCategories}
           setSelectedCategories={setSelectedCategories}

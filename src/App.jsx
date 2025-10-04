@@ -7,10 +7,11 @@ import Layout from "./components/Layout";
 import Product_Detail from "./components/Product_Detail";
 import { Toaster } from "react-hot-toast";
 import ShopCard from "./components/ShopCard";
+import ErrorPage from "./components/ErrorPage";
 export default function App() {
   return (
-    <div>
-      <Toaster position="bottom-left" reverseOrder={true} />
+    <div className="bg-white">
+      <Toaster position="top-center" reverseOrder={true} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -22,7 +23,7 @@ export default function App() {
             <Route path="shopcard" element={<ShopCard />} />
           </Route>
 
-          <Route path="*" element={<h1>Not Found || 404 Error</h1>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>

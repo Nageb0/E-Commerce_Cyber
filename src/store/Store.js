@@ -1,6 +1,7 @@
+import toast from "react-hot-toast";
 import { create } from "zustand";
 
-export const domainApi = "http://localhost:1337";
+export const domainApi = "https://reassuring-spirit-778276d690.strapiapp.com";
 
 export const useActivePage = create((set) => ({
   value: 1,
@@ -33,8 +34,10 @@ export const useAddtoCard = create((set, get) => ({
         const items = state.items.map((item) =>
           item.id === newOpj.id ? { ...item, qty: (item.qty ?? 1) + 1 } : item
         );
+        toast.success('The quantity has been increased successfully')
         return { items };
       }
+      toast.success('Product is added successfully')
       return { items: [...state.items, { ...newOpj, qty: newOpj.qty ?? 1 }] };
     }),
   removeFromShopCard: (id) =>

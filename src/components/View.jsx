@@ -19,7 +19,7 @@ export default function View({ setCategory, selectedCategories }) {
   return (
     <div className=" grow min-h-[100vh]">
       <div className="flex justify-between">
-        <p className="text-[13px] md:text-[23px] font-bold p-3">
+        <p className="text-[13px] md:text-[15px] lg:text-[17px] xl:text-[23px] font-bold p-3">
           Available Products : {productTotal}
         </p>
         {/* Select Product In View */}

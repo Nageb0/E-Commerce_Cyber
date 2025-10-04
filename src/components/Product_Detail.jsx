@@ -31,10 +31,8 @@ export default function Product_Detail() {
         } else {
           setSelectImg(null);
         }
-        console.log(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Some Thing Worng");
         navigate("*");
       });
@@ -133,7 +131,6 @@ export default function Product_Detail() {
             <button
               onClick={() => {
                 addToCard({ ...productDetail });
-                toast.success("Successfully Added To Cart");
               }}
               className="btn btn-neutral text-[12px] xl:text-[15px] grow hover:bg-neutral-800 hover:text-white hover:shadow-2xs"
             >
